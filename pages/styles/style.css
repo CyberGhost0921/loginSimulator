@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #0b0b0b;
+    color: #e3e3e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.signin-container {
+    width: 100%;
+    max-width: 440px;
+    padding: 24px;
+    background-color: #0b0b0b;
+}
+
+/* Header standard */
+.google-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #e3e3e3;
+    margin-bottom: 40px;
+}
+
+/* App Branding */
+.app-icon-container {
+    margin-bottom: 24px;
+}
+
+.snapchat-icon {
+    width: 48px;
+    height: 48px;
+    background-color: #FFFC00; /* Snapchat Yellow */
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 400;
+    color: #e3e3e3;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #e3e3e3;
+    margin-bottom: 40px;
+}
+
+.app-name {
+    color: #a8c7fa;
+}
+
+/* Material Design Floating Label Outline Input */
+.input-group {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 20px 16px;
+    background: transparent;
+    border: 1px solid #8e918f;
+    border-radius: 4px;
+    color: #e3e3e3;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+/* Input focus state */
+.input-group input:focus {
+    border: 2px solid #a8c7fa;
+    padding: 19px 15px; /* Adjusting padding to keep layout stable with 2px border */
+}
+
+/* Floating Label Logic */
+.input-group label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #c4c7c5;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    background-color: #0b0b0b;
+    padding: 0 4px;
+}
+
+/* Move label up on focus or when input is not empty */
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+    top: 0;
+    font-size: 12px;
+    color: #a8c7fa;
+}
+
+.input-group input:not(:focus):not(:placeholder-shown) ~ label {
+    color: #c4c7c5;
+}
+
+/* Links */
+.forgot-link-container {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.blue-link {
+    color: #a8c7fa;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.blue-link:hover {
+    text-decoration: underline;
+}
+
+/* Disclaimer text style */
+.disclaimer {
+    font-size: 13px;
+    color: #8e918f;
+    line-height: 1.5;
+    text-align: left;
+    margin-bottom: 45px;
+}
+
+.disclaimer a {
+    color: #a8c7fa;
+    text-decoration: none;
+}
+
+/* Action row styling */
+.footer-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-account {
+    font-size: 14px;
+}
+
+/* Pill shaped button matching the image */
+.next-btn {
+    background-color: #a8c7fa;
+    color: #003063;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.next-btn:hover {
+    background-color: #c2e7ff;
+}

