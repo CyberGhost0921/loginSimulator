@@ -1,18 +1,10 @@
 <?php
 
-$host = "127.0.0.1";
-$database = "loginSimulator";
-$user = "root";
-$password = "";
-
-/* 
 $host = getenv("MYSQLHOST");
 $port = getenv("MYSQLPORT");
 $database = getenv("MYSQLDATABASE");
 $user = getenv("MYSQLUSER");
 $password = getenv("MYSQLPASSWORD");
-
-*/
 
 try {
     $pdo = new PDO(
