@@ -5,17 +5,18 @@ $database = "loginSimulator";
 $user = "root";
 $password = "";
 
-<?php
-
+/* 
 $host = getenv("MYSQLHOST");
 $port = getenv("MYSQLPORT");
 $database = getenv("MYSQLDATABASE");
 $user = getenv("MYSQLUSER");
 $password = getenv("MYSQLPASSWORD");
 
+*/
+
 try {
     $pdo = new PDO(
-        "mysql:host=$host;port=$port;dbname=$database;charset=utf8mb4",
+        "mysql:host=$host;dbname=$database;charset=utf8mb4",
         $user,
         $password
     );
