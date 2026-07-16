@@ -1,7 +1,5 @@
-FROM php:8.4-apache
+FROM dunglas/frankenphp:php8.4
 
-RUN docker-php-ext-install pdo_mysql
+RUN install-php-extensions pdo_mysql
 
-COPY . /var/www/html/
-
-EXPOSE 80
+COPY . /app/public
