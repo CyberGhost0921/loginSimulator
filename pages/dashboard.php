@@ -1,9 +1,6 @@
 <?php
-$pdo = new PDO(
-    "mysql:host=127.0.0.1;dbname=loginSimulator",
-    "root",
-    ""
-);
+
+require_once __DIR__ . '/../config/db.php';
 
 $stmt = $pdo->query(
     "SELECT * FROM users ORDER BY id DESC"
