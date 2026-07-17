@@ -4,16 +4,12 @@ if (preg_match('/\.(css|js|png|jpg|jpeg|gif|svg|ico)$/', $page)) {
     return false;
 }
 
-function showPage($pageToShow)
+function showPage($pageToShow, $pdo = null)
 {
     switch ($pageToShow)
     {
         case "login":
             require __DIR__ . "/../pages/login.html";
-            break;
-
-        case "signUp":
-            require __DIR__ . "/../pages/signUp.html";
             break;
         
         case "igLogin":

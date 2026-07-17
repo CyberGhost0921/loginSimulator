@@ -19,7 +19,7 @@ switch ($method . "-" . $page)
         break;
     
     case "GET-/dashboard":
-        showPage("dashboard");
+        showPage("dashboard", $pdo);
         break;
     
     case "GET-/google/password":

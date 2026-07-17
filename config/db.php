@@ -13,9 +13,7 @@ try {
         $password
     );
 
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-} catch (PDOException $e) {
+} catch (Throwable $e) {
     die($e->getMessage());
 }
 

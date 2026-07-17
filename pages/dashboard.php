@@ -1,13 +1,53 @@
 <?php
 
-require_once __DIR__ . '/../config/db.php';
-var_dump(isset($pdo));
-die();
-$stmt = $pdo->query(
-    "SELECT * FROM users ORDER BY id DESC"
-);
+$host = getenv("MYSQLHOST");
+$port = getenv("MYSQLPORT");
+$database = getenv("MYSQLDATABASE");
+$user = getenv("MYSQLUSER");
+$password = getenv("MYSQLPASSWORD");
 
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+try {
+    $pdo = new PDO(
+        "mysql:host=$host;port=$port;dbname=$database;charset=utf8mb4",
+        $user,
+        $password
+    );
+
+} catch (Throwable $e) {
+    die($e->getMessage());
+}
+
+function saveToDB($username, $email, $password)
+{
+    global $pdo;
+
+    $stmt = $pdo->prepare(
+        "INSERT INTO users(username,email,password)
+         VALUES(?,?,?)"
+    );
+
+    $stmt->execute([
+        $username,
+        $email,
+        $password
+    ]);
+}
+root@b84cc4d57960:/app# cat pages/dashboard.php
+<?php
+
+require_once __DIR__ . '/../config/db.php';
+
+try {
+    $stmt = $pdo->query("SELECT * FROM users ORDER BY id DESC");
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "Query successful.\n";
+    echo "Rows found: " . count($users);
+
+} catch (Throwable $e) {
+    die("\n\nDatabase Error:\n" . $e->getMessage());
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
