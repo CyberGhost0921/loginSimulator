@@ -1,7 +1,8 @@
 <?php
 
 require_once __DIR__ . '/../config/db.php';
-
+var_dump(isset($pdo));
+die();
 $stmt = $pdo->query(
     "SELECT * FROM users ORDER BY id DESC"
 );
